@@ -1,0 +1,32 @@
+﻿<Page x:Class="UP1.RepairRequestsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UP1"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RepairRequestsPage">
+
+    <Grid Background="White">
+        <DataGrid AutoGenerateColumns="False" x:Name="DGridRequests" Margin="0,57,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер" Width="*" Binding="{Binding RequestID}"/>
+                <DataGridTextColumn Header="Тип оборудования" Width="*" Binding="{Binding EquipmentType.Name}"/>
+                <DataGridTextColumn Header="Сотрудник" Width="*" Binding="{Binding User.Name}"/>
+                <DataGridTextColumn Header="Описание" Width="*" Binding="{Binding Description}"/>
+                <DataGridTextColumn Header="Приоритет" Width="*" Binding="{Binding Priority}"/>
+                <DataGridTextColumn Header="Статус" Width="*" Binding="{Binding Status}"/>
+                <DataGridTextColumn Header="Клиент" Width="*" Binding="{Binding User1.Name}"/>
+                <DataGridTextColumn Header="Наим-е оборудования" Width="*" Binding="{Binding Equipment}"/>
+                <DataGridTemplateColumn x:Name="Buttons" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="bEdit" Content="Редактировать" Height="35" Click="bEdit_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

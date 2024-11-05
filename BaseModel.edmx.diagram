@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="200d1d8858a94edda69414bfb560482f" Name="Diagram1">
+        <EntityTypeShape EntityType="UP1Model.EqiupmentType" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP1Model.RepairReport" Width="1.5" PointX="9.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP1Model.RepairRequest" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP1Model.RepairWork" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP1Model.Role" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP1Model.sysdiagram" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UP1Model.User" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="UP1Model.FK_RepairRequests_EqiupmentTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="UP1Model.FK_RepairReports_RepairWorks" ManuallyRouted="false" />
+        <AssociationConnector Association="UP1Model.FK_RepairRequests_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="UP1Model.FK_RepairRequests_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="UP1Model.FK_RepairWorks_RepairRequests" ManuallyRouted="false" />
+        <AssociationConnector Association="UP1Model.FK_Users_Roles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
