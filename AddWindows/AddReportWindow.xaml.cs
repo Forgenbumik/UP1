@@ -19,7 +19,7 @@ namespace UP1.AddWindows
     /// </summary>
     public partial class AddReportWindow : Window
     {
-        public AddReportWindow()
+        public AddReportWindow(RepairReport repairreport)
         {
             InitializeComponent();
         }

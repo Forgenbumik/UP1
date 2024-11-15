@@ -19,7 +19,7 @@ namespace UP1.AddWindows
     /// </summary>
     public partial class AddRequestWindow : Window
     {
-        public AddRequestWindow()
+        public AddRequestWindow(RepairRequest repairRequest)
         {
             InitializeComponent();
         }

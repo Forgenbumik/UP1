@@ -19,7 +19,7 @@ namespace UP1.AddWindows
     /// </summary>
     public partial class AddUserWindow : Window
     {
-        public AddUserWindow()
+        public AddUserWindow(User user)
         {
             InitializeComponent();
         }
