@@ -6,9 +6,14 @@
       xmlns:local="clr-namespace:UP1.TablePages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="RepairWorksPage">
+      Title="RepairWorksPage" IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid>
-        
+        <DataGrid x:Name="DGridWorks" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер работы" Binding="{Binding WorkID}"/>
+                <DataGridTextColumn Header="Номер заявки" Binding="{Binding RequestID}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

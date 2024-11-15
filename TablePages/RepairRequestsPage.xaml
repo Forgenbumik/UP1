@@ -6,10 +6,19 @@
       xmlns:local="clr-namespace:UP1"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="RepairRequestsPage">
+      Title="RepairRequestsPage" IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid Background="White">
-        <DataGrid AutoGenerateColumns="False" x:Name="DGridRequests" Margin="0,57,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="627*"/>
+            <ColumnDefinition Width="173*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="19*"/>
+            <RowDefinition Height="131*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Заявки на ремонт" FontSize="22" Margin="11,16,439,10"/>
+        <DataGrid AutoGenerateColumns="False" x:Name="DGridRequests" Grid.Row="1" Grid.Column="0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Номер" Width="*" Binding="{Binding RequestID}"/>
                 <DataGridTextColumn Header="Тип оборудования" Width="*" Binding="{Binding EquipmentType.Name}"/>
@@ -28,5 +37,16 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                    <RowDefinition Height="127*" MinHeight="57"/>
+                    <RowDefinition Height="190*" MinHeight="145"/>
+                    <RowDefinition Height="303*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.RowSpan="3" Background="#D2F1F0"/>
+            <Button x:Name="AddCategory" Content="Новая заявка" Height="30" Margin="0,-100,0,0" Width="150" VerticalAlignment="Center" FontSize="14" HorizontalAlignment="Center" Click="AddRequest_Click" Grid.Column="1" Grid.Row="1" BorderBrush="Transparent"/>
+            <Button x:Name="Delete" Content="Удалить" Margin="0,0,0,0" Height="30" Width="150" VerticalAlignment="Center" FontSize="14" HorizontalAlignment="Center" Click="Delete_Click" Grid.Column="1" Grid.Row="1" BorderBrush="Transparent"/>
+            <Button x:Name="Refresh" Content="Обновить" Margin="0,100,0,0" Height="30" Width="150" VerticalAlignment="Center" FontSize="14" HorizontalAlignment="Center" Click="Refresh_Click" Grid.Column="1" Grid.Row="1" BorderBrush="Transparent"/>
+        </Grid>
     </Grid>
 </Page>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UP1.AddWindows;
 
 namespace UP1.TablePages
 {
@@ -21,9 +22,11 @@ namespace UP1.TablePages
     public partial class UsersPage : Page
     {
         UP1Entities UP = UP1Entities.GetContext();
+        AddUserWindow addUserWindow;
         public UsersPage()
         {
             InitializeComponent();
+            GridUsers.Items.Clear();
             GridUsers.ItemsSource = UP.Users.ToList();
         }
 

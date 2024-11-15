@@ -23,13 +23,14 @@ namespace UP1
     /// </summary>
     public partial class RepairRequestsPage : Page
     {
-        UP1Entities SE = UP1Entities.GetContext();
-        AddRequestWindow AddRequestWindow;
+        UP1Entities UP = UP1Entities.GetContext();
+        AddRequestWindow addRequestWindow;
         User _curuser;
         public RepairRequestsPage(User user)
         {
             InitializeComponent();
             _curuser = user;
+            CheckPositionWithUpdating();
         }
 
         private void bEdit_Click(object sender, RoutedEventArgs e)
@@ -37,6 +38,61 @@ namespace UP1
 
         }
 
+        private void CheckPositionWithUpdating()
+        {
+            DGridRequests.Items.Clear();
+            if (_curuser.Role.Name == "Менеджер" || _curuser.Role.Name == "Директор")
+            {
+                foreach (var req in UP.RepairRequests)
+                {
+                    DGridRequests.Items.Add(req);
+                }
+            }
+            else if (_curuser.Role.Name == "Мастер")
+            {
+                //AddRequest.Visibility = Visibility.Hidden;
+                //Delete.Visibility = Visibility.Hidden;
+                foreach (var req in UP.RepairRequests)
+                {
+                    if (req.Employee == _curuser)
+                    {
+                        DGridRequests.Items.Add(req);
+                    }
+                }
+                Buttons.Visibility = Visibility.Hidden;
+            }
+            else if (_curuser.Role.Name == "Клиент")
+            {
+                foreach(var req in UP.RepairRequests)
+                {
+                    if (req.Client == _curuser)
+                    {
+                        DGridRequests.Items.Add(req);
+                    }
+                }
+                Buttons.Visibility = Visibility.Hidden;
+            }
+        }
 
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            UP.ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+            CheckPositionWithUpdating();
+        }
+
+        private void AddRequest_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
