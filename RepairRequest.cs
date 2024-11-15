@@ -30,8 +30,8 @@ namespace UP1
         public Nullable<int> ClientID { get; set; }
     
         public virtual EqiupmentType EqiupmentType { get; set; }
-        public virtual User User { get; set; }
-        public virtual User User1 { get; set; }
+        public virtual User Employee { get; set; }
+        public virtual User Client { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RepairWork> RepairWorks { get; set; }
     }
