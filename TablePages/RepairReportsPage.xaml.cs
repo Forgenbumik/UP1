@@ -43,10 +43,10 @@ namespace UP1.TablePages
             switch (name)
             {
                 case "Менеджер":
-                    //AddReport.Visibility = Visibility.Hidden; кнопка добавитьь отчёт
-                    //Delete.Visibility = Visibility.Hidden; кнопка удалить отчёт
+                    AddReport.Visibility = Visibility.Hidden;
+                    Delete.Visibility = Visibility.Hidden;
                     DGridReports.ItemsSource = UP.RepairWorks.ToList();
-                    //Buttons.Visibility = Visibility.Hidden; кнопки редактирования
+                    Buttons.Visibility = Visibility.Hidden;
                     break;
                 case "Мастер":
                     foreach (var rep in UP.RepairReports)
@@ -75,8 +75,39 @@ namespace UP1.TablePages
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             UP.ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+            CheckPositionWithUpdating();
         }
 
+        private void AddReport_Click(object sender, RoutedEventArgs e)
+        {
+            addReportWindow = new AddReportWindow(null);
+            addReportWindow.Show();
+        }
 
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItems = DGridReports.SelectedItems.Cast<RepairReport>().ToList();
+            if (selectedItems.Any())
+            {
+                foreach (var item in selectedItems.Select(itm => itm))
+                {
+                    UP.RepairReports.Remove(item);
+                }
+                UP.SaveChanges();
+                CheckPositionWithUpdating();
+            }
+        }
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            UP.ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+            CheckPositionWithUpdating();
+        }
+
+        private void bEdit_Click(object sender, RoutedEventArgs e)
+        {
+            addReportWindow = new AddReportWindow((sender as Button).DataContext as RepairReport);
+            addReportWindow.Show();
+        }
     }
 }

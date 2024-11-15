@@ -34,6 +34,7 @@ namespace UP1.TablePages
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             UP.ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+            CheckPositionWithUpdating();
         }
 
         private void CheckPositionWithUpdating()
@@ -41,14 +42,14 @@ namespace UP1.TablePages
             switch (_curuser.Role.Name)
             {
                 case "Менеджер":
-                    //AddWork.Visibility = Visibility.Hidden; кнопка добавить работу
-                    //Delete.Visibility = Visibility.Hidden; кнопка удалить работу
+                    AddWork.Visibility = Visibility.Hidden;
+                    Delete.Visibility = Visibility.Hidden;
                     DGridWorks.Items.Clear();
                     foreach (var work in UP.RepairWorks)
                     {
                         DGridWorks.Items.Add(work);
                     }
-                    //Buttons.Visibility = Visibility.Hidden; кнопки редактирования
+                    Buttons.Visibility = Visibility.Hidden;
                     break;
                 case "Мастер":
                     DGridWorks.Items.Clear();
@@ -77,6 +78,38 @@ namespace UP1.TablePages
                     }
                     break;
             }
+        }
+
+        private void AddWork_Click(object sender, RoutedEventArgs e)
+        {
+            addWorkWindow = new AddWorkWindow(null);
+            addWorkWindow.Show();
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItems = DGridWorks.SelectedItems.Cast<RepairWork>().ToList();
+            if (selectedItems.Any())
+            {
+                foreach (var item in selectedItems.Select(itm => itm))
+                {
+                    UP.RepairWorks.Remove(item);
+                }
+                UP.SaveChanges();
+                CheckPositionWithUpdating();
+            }
+        }
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            UP.ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+            CheckPositionWithUpdating();
+        }
+
+        private void bEdit_Click(object sender, RoutedEventArgs e)
+        {
+            addWorkWindow = new AddWorkWindow((sender as Button).DataContext as RepairWork);
+            addWorkWindow.Show();
         }
     }
 }

@@ -9,12 +9,40 @@
       Title="UsersPage" IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid Background="White">
-        <DataGrid x:Name="GridUsers">
-            <DataGridTextColumn Header="Логин" Binding="{Binding Login}"/>
-            <DataGridTextColumn Header="Пароль" Binding="{Binding Password}"/>
-            <DataGridTextColumn Header="Роль" Binding="{Binding Role}"/>
-            <DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="627*"/>
+            <ColumnDefinition Width="173*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="19*"/>
+            <RowDefinition Height="131*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Пользователи" FontSize="22" Margin="11,16,439,10"/>
+        <DataGrid x:Name="GridUsers" Grid.Row="1" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Логин" Binding="{Binding Login}"/>
+                <DataGridTextColumn Header="Пароль" Binding="{Binding Password}"/>
+                <DataGridTextColumn Header="Роль" Binding="{Binding Role}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>
+                <DataGridTemplateColumn x:Name="Buttons" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="bEdit" Content="Редактировать" Height="35" Click="bEdit_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
         </DataGrid>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="127*" MinHeight="57"/>
+                <RowDefinition Height="190*" MinHeight="145"/>
+                <RowDefinition Height="303*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.RowSpan="3" Background="#D2F1F0"/>
+            <Button x:Name="AddReport" Content="Новая заявка" Style="{StaticResource AddButton}" Click="AddUser_Click" />
+            <Button x:Name="Delete" Content="Удалить" Style="{StaticResource DeleteButton}" Click="Delete_Click"/>
+            <Button x:Name="Refresh" Content="Обновить" Style="{StaticResource RefreshButton}" Click="Refresh_Click"/>
+        </Grid>
     </Grid>
 </Page>

@@ -9,11 +9,38 @@
       Title="RepairWorksPage" IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid>
-        <DataGrid x:Name="DGridWorks" AutoGenerateColumns="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="627*"/>
+            <ColumnDefinition Width="173*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="19*"/>
+            <RowDefinition Height="131*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Работы по ремонту" FontSize="22" Margin="11,16,439,10"/>
+        <DataGrid x:Name="DGridWorks" AutoGenerateColumns="False" Grid.Row="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Номер работы" Binding="{Binding WorkID}"/>
                 <DataGridTextColumn Header="Номер заявки" Binding="{Binding RequestID}"/>
+                <DataGridTemplateColumn x:Name="Buttons" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="bEdit" Content="Редактировать" Height="35" Click="bEdit_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="127*" MinHeight="57"/>
+                <RowDefinition Height="190*" MinHeight="145"/>
+                <RowDefinition Height="303*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.RowSpan="3" Background="#D2F1F0"/>
+            <Button x:Name="AddWork" Content="Новая заявка" Style="{StaticResource AddButton}" Click="AddWork_Click" />
+            <Button x:Name="Delete" Content="Удалить" Style="{StaticResource DeleteButton}" Click="Delete_Click"/>
+            <Button x:Name="Refresh" Content="Обновить" Style="{StaticResource RefreshButton}" Click="Refresh_Click"/>
+        </Grid>
     </Grid>
 </Page>

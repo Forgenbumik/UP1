@@ -33,11 +33,6 @@ namespace UP1
             CheckPositionWithUpdating();
         }
 
-        private void bEdit_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void CheckPositionWithUpdating()
         {
             DGridRequests.Items.Clear();
@@ -50,8 +45,8 @@ namespace UP1
             }
             else if (_curuser.Role.Name == "Мастер")
             {
-                //AddRequest.Visibility = Visibility.Hidden;
-                //Delete.Visibility = Visibility.Hidden;
+                AddRequest.Visibility = Visibility.Hidden;
+                Delete.Visibility = Visibility.Hidden;
                 foreach (var req in UP.RepairRequests)
                 {
                     if (req.Employee == _curuser)
@@ -80,19 +75,36 @@ namespace UP1
             CheckPositionWithUpdating();
         }
 
+        private void bEdit_Click(object sender, RoutedEventArgs e)
+        {
+            addRequestWindow = new AddRequestWindow((sender as Button).DataContext as RepairRequest);
+            addRequestWindow.Show();
+        }
+
         private void AddRequest_Click(object sender, RoutedEventArgs e)
         {
-
+            addRequestWindow = new AddRequestWindow(null);
+            addRequestWindow.Show();
         }
 
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
-
+            UP.ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+            CheckPositionWithUpdating();
         }
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-
+            var selectedItems = DGridRequests.SelectedItems.Cast<RepairRequest>().ToList();
+            if (selectedItems.Any())
+            {
+                foreach (var item in selectedItems.Select(itm => itm))
+                {
+                    UP.RepairRequests.Remove(item);
+                }
+                UP.SaveChanges();
+                CheckPositionWithUpdating();
+            }
         }
     }
 }

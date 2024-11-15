@@ -44,9 +44,9 @@
                     <RowDefinition Height="303*"/>
             </Grid.RowDefinitions>
             <Grid Grid.RowSpan="3" Background="#D2F1F0"/>
-            <Button x:Name="AddCategory" Content="Новая заявка" Height="30" Margin="0,-100,0,0" Width="150" VerticalAlignment="Center" FontSize="14" HorizontalAlignment="Center" Click="AddRequest_Click" Grid.Column="1" Grid.Row="1" BorderBrush="Transparent"/>
-            <Button x:Name="Delete" Content="Удалить" Margin="0,0,0,0" Height="30" Width="150" VerticalAlignment="Center" FontSize="14" HorizontalAlignment="Center" Click="Delete_Click" Grid.Column="1" Grid.Row="1" BorderBrush="Transparent"/>
-            <Button x:Name="Refresh" Content="Обновить" Margin="0,100,0,0" Height="30" Width="150" VerticalAlignment="Center" FontSize="14" HorizontalAlignment="Center" Click="Refresh_Click" Grid.Column="1" Grid.Row="1" BorderBrush="Transparent"/>
+            <Button x:Name="AddRequest" Content="Новая заявка" Style="{StaticResource AddButton}" Click="AddRequest_Click" />
+            <Button x:Name="Delete" Content="Удалить" Style="{StaticResource DeleteButton}" Click="Delete_Click"/>
+            <Button x:Name="Refresh" Content="Обновить" Style="{StaticResource RefreshButton}" Click="Refresh_Click"/>
         </Grid>
     </Grid>
 </Page>
