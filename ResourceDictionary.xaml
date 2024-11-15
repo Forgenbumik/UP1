@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="Button">
+        <Setter Property="FontFamily" Value="Monotype Corsiva"/>
+        <Setter Property="Background" Value="#5EC6CD"/>
+    </Style>
+    <Style TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Monotype Corsiva"/>
+    </Style>
+    <Style TargetType="TextBox">
+        <Setter Property="FontFamily" Value="Monotype Corsiva"/>
+    </Style>
+    
+</ResourceDictionary>
