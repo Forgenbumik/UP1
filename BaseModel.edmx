@@ -207,8 +207,8 @@
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ClientID" Type="Int32" />
           <NavigationProperty Name="EqiupmentType" Relationship="Self.FK_RepairRequests_EqiupmentTypes" FromRole="RepairRequests" ToRole="EqiupmentTypes" />
-          <NavigationProperty Name="User" Relationship="Self.FK_RepairRequests_Users" FromRole="RepairRequests" ToRole="Users" />
-          <NavigationProperty Name="User1" Relationship="Self.FK_RepairRequests_Users1" FromRole="RepairRequests" ToRole="Users" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_RepairRequests_Users" FromRole="RepairRequests" ToRole="Users" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_RepairRequests_Users1" FromRole="RepairRequests" ToRole="Users" />
           <NavigationProperty Name="RepairWorks" Relationship="Self.FK_RepairWorks_RepairRequests" FromRole="RepairRequests" ToRole="RepairWorks" />
         </EntityType>
         <EntityType Name="RepairWork">

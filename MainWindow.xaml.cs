@@ -23,7 +23,7 @@ namespace UP1
     public partial class MainWindow : Window
     {
         UP1Entities UP = UP1Entities.GetContext();
-        User User = new User();
+        User User;
         EquipmentTypesPage typespage;
         RepairRequestsPage repairrequestspage;
         RepairWorksPage repairworkspage;
