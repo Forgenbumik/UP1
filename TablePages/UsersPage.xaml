@@ -22,7 +22,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Логин" Binding="{Binding Login}"/>
                 <DataGridTextColumn Header="Пароль" Binding="{Binding Password}"/>
-                <DataGridTextColumn Header="Роль" Binding="{Binding Role}"/>
+                <DataGridTextColumn Header="Роль" Binding="{Binding Role.Name}"/>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>
                 <DataGridTemplateColumn x:Name="Buttons" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
